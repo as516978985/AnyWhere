@@ -44,9 +44,10 @@ jobs:
           path: artifacts/*.apk
 
       - name: Upload to Release
-        if: github.event_name == 'release'
+        # if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
           files: artifacts/*.apk
+          tag_name: v1.0.0   # ← 加上这行，指定要上传到哪个 Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
